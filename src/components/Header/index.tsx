@@ -4,8 +4,10 @@ import styles from './styles.module.css';
 function Header() {
     return (
         <header className={styles.header}>
-            <h3>Habanero</h3>
-            <Switch />
+            <div>
+                <h3>Habanero</h3>
+                <Switch />
+            </div>
         </header>
     );
 }
