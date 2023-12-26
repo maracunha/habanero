@@ -1,12 +1,16 @@
-import Switch from './components/Switch';
+import Header from './components/Header';
+import Login from './pages/Login';
+import Suppliers from './pages/Suppliers';
+import SuppliersDetail from './pages/SuppliersDetail';
 
 function App() {
     return (
         <main>
-            <h1 style={{ color: 'var(--primary)' }}>Habanero</h1>
-            <Switch />
-            Elevando o Sabor, Definindo a Qualidade. O Ingrediente Secreto para o Sucesso do Seu
-            Negócio com Preços Irresistíveis.
+            <Header />
+
+            <Login />
+            <Suppliers />
+            <SuppliersDetail />
         </main>
     );
 }
