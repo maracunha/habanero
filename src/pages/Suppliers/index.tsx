@@ -1,34 +1,6 @@
-import { useNavigate } from 'react-router-dom';
 import { useGetSuppliesQuery } from '../../services/api';
-import styles from './styles.module.css';
-
-interface Supplier {
-    name: string;
-    cnpj: string;
-    phoneNumber: string;
-    ownerName: string;
-    publicId: string;
-}
-
-function Line(data: Supplier) {
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate(`/suppliers/${data.publicId}`);
-    };
-
-    return (
-        <ol key={data.publicId}>
-            <li>{data.name}</li>
-            <li>{data.cnpj}</li>
-            <li>{data.phoneNumber}</li>
-            <li>{data.ownerName}</li>
-            <li>
-                <button onClick={handleClick}>Edit</button>
-            </li>
-        </ol>
-    );
-}
+import Line from '../../components/Line';
+// import styles from './styles.module.css';
 
 function Suppliers() {
     const { data, isLoading } = useGetSuppliesQuery();
@@ -40,16 +12,14 @@ function Suppliers() {
     };
 
     console.log(data, isLoading);
-    if (isLoading) {
+    if (isLoading || !data) {
         return 'loading...';
     }
-
-    const suppliers = [header, ...data];
 
     return (
         <>
             <h2>Suppliers</h2>
-            {data.map((supplier) => Line(supplier))}
+            {data && data.map((supplier) => Line(supplier))}
         </>
     );
 }
