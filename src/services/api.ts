@@ -11,15 +11,6 @@ export const api = createApi({
             const token = (getState() as RootState).auth.token;
             if (token) {
                 headers.set('authorization', `Bearer ${token}`);
-            } else {
-                headers.set(
-                    'authorization',
-                    `Basic Y2F5ZW5hLXRlc3Q6ZGQzZWQ5MGUtNjY3Zi00MjQ4LWE2NzEtOTI2NjI2MWRiYTVi`,
-                );
-                headers.set(
-                    'Content-type',
-                    'application/x-www-form-urlencoded; charset=UTF-8',
-                );
             }
             return headers;
         },
@@ -30,9 +21,27 @@ export const api = createApi({
                 url: '/oauth/token',
                 method: 'POST',
                 body: qs.stringify(credentials),
+                headers: {
+                    authorization:
+                        'Basic Y2F5ZW5hLXRlc3Q6ZGQzZWQ5MGUtNjY3Zi00MjQ4LWE2NzEtOTI2NjI2MWRiYTVi',
+                    'Content-type':
+                        'application/x-www-form-urlencoded; charset=UTF-8',
+                },
             }),
+        }),
+        getSupplies: builder.query({
+            query: () => ({ url: 'suppliers' }),
+            transformResponse: (response) => response.data,
+        }),
+        getSuppliesById: builder.query({
+            query: (id: string) => ({ url: 'suppliers', params: { id } }),
+            transformResponse: (response) => response.data,
         }),
     }),
 });
 
-export const { useLoginMutation } = api;
+export const {
+    useLoginMutation,
+    useGetSuppliesQuery,
+    useGetSuppliesByIdQuery,
+} = api;
