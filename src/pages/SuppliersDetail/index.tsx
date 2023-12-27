@@ -1,23 +1,10 @@
-import { useState } from 'react';
-import { useGetSuppliesByIdQuery } from '../../services/api';
 import { Link, useParams } from 'react-router-dom';
+import { useState } from 'react';
+
+import { useGetSuppliesByIdQuery } from '../../services/api';
+import FormInputText from '../../components/FormInputText';
 
 import styles from './styles.module.css';
-
-interface IFormInputText {
-    label: string;
-    value: string;
-    disabled: boolean;
-}
-const FormInputText = ({ label, value, disabled }: IFormInputText) => {
-    const name = label.replace(/ /g, '');
-    return (
-        <li>
-            <label htmlFor={name}>{label}</label>
-            <input type="text" name={name} value={value} disabled={disabled} />
-        </li>
-    );
-};
 
 function SuppliersDetail() {
     const { id } = useParams();
