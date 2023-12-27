@@ -17,7 +17,7 @@ function MainRouter() {
                         <Routes>
                             <Route path="/" element={<Suppliers />} />
                             <Route
-                                path="/supplier:id"
+                                path="/supplier/:id"
                                 element={<SuppliersDetail />}
                             />
                             <Route path="*" element={<NotFound />} />
