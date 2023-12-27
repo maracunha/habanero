@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
 import qs from 'qs';
+import { Supplier, Suppliers } from './api.types';
 
 export const api = createApi({
     reducerPath: 'authApi',
@@ -31,11 +32,18 @@ export const api = createApi({
         }),
         getSupplies: builder.query({
             query: () => ({ url: 'suppliers' }),
-            transformResponse: (response) => response,
+            transformResponse: (response: Suppliers[]) => response,
+            transformErrorResponse: (response) => {
+                console.log('aouaue', response);
+                localStorage.clear();
+            },
         }),
         getSuppliesById: builder.query({
-            query: (id: string) => ({ url: 'suppliers', params: { id } }),
-            transformResponse: (response) => response.data,
+            query: (id: string) => ({ url: `suppliers/${id}` }),
+            transformResponse: (response: Supplier) => response,
+            transformErrorResponse: () => {
+                localStorage.clear();
+            },
         }),
     }),
 });
