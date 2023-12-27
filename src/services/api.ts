@@ -31,7 +31,7 @@ export const api = createApi({
         }),
         getSupplies: builder.query({
             query: () => ({ url: 'suppliers' }),
-            transformResponse: (response) => response.data,
+            transformResponse: (response) => response,
         }),
         getSuppliesById: builder.query({
             query: (id: string) => ({ url: 'suppliers', params: { id } }),
