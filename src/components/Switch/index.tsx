@@ -1,8 +1,9 @@
-import { useTheme } from '../../hooks/useTheme';
+import { Theme, useTheme } from '../../hooks/useTheme';
 import styles from './styles.module.css';
 
 function Switch() {
-    const [theme, handleChange] = useTheme('light');
+    const localTheme = localStorage.getItem('theme') ?? 'light';
+    const [theme, handleChange] = useTheme(localTheme as Theme);
 
     return (
         <div className={styles.wrapper}>
