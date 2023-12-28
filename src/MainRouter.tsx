@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 
 import Login from './pages/Login';
-import NotFound from './pages/NotFound';
+import NotFound from './pages/NotFoundPage';
 import RequireAuth from './components/RequireAuth';
 import Suppliers from './pages/Suppliers';
 import SuppliersDetail from './pages/SuppliersDetail';
