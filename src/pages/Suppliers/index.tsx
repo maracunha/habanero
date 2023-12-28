@@ -13,7 +13,6 @@ const HEADER = {
 function Suppliers() {
     const { data, isLoading } = useGetSuppliesQuery('');
 
-    console.log(data, isLoading);
     if (isLoading || !data) {
         return 'loading...';
     }
@@ -21,8 +20,8 @@ function Suppliers() {
     return (
         <section className={styles.wrapper}>
             <h2>Suppliers</h2>
-            <Line {...HEADER} />
-            {data && data.map((supplier) => Line(supplier))}
+            <Line data={HEADER} />
+            {data && data.map((supplier) => <Line data={supplier} showEdit />)}
         </section>
     );
 }

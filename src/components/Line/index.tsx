@@ -3,16 +3,23 @@ import { Suppliers } from '../../services/api.types';
 
 import styles from './styles.module.css';
 
-function Line({ ...data }: Suppliers) {
+interface Line {
+    data: Suppliers;
+    showEdit?: boolean;
+}
+
+function Line({ data, showEdit = false }: Line) {
     return (
         <ol key={data.publicId} className={styles.line}>
             <li>{data.name}</li>
             <li>{data.cnpj}</li>
             <li>{data.phoneNumber}</li>
             <li>{data.ownerName}</li>
-            <li>
-                <Link to={`/supplier/${data.publicId}`}>Edit</Link>
-            </li>
+            {showEdit && (
+                <li>
+                    <Link to={`/supplier/${data.publicId}`}>Edit</Link>
+                </li>
+            )}
         </ol>
     );
 }
