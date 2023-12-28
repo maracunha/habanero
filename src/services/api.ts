@@ -38,7 +38,7 @@ export const api = createApi({
         getSupplies: builder.query({
             query: () => ({ url: 'suppliers' }),
             transformResponse: (response: Suppliers[]) => response,
-            transformErrorResponse: (response) => {
+            transformErrorResponse: () => {
                 localStorage.clear();
             },
         }),
