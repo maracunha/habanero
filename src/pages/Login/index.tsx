@@ -7,6 +7,7 @@ import { useLoginMutation } from '../../services/api';
 import { setCredentials } from '../../services/authSlice';
 
 import styles from './styles.module.scss';
+import logo from '../../assets/habanero.svg';
 
 function Login() {
     const dispatch = useAppDispatch();
@@ -38,17 +39,20 @@ function Login() {
     return (
         <section className={styles.wrapper}>
             <div className={styles.image}>
-                <h3>Login</h3>
-
-                <span>
-                    Elevando o Sabor, Definindo a Qualidade. O Ingrediente
-                    Secreto para o Sucesso do Seu Negócio com Preços
-                    Irresistíveis.
-                </span>
+                <h3>Elevando o Sabor, Definindo a Qualidade</h3>
+                <div>
+                    <figure>
+                        <img src={logo} alt="Habanero truck" />
+                    </figure>
+                    <span>
+                        O Ingrediente Secreto para o Sucesso do Seu Negócio com
+                        Preços Irresistíveis.
+                    </span>
+                </div>
             </div>
 
             <div className={styles.form}>
-                <h3>Login</h3>
+                <h2>Log in</h2>
                 <form id="login" onSubmit={handleSubmit}>
                     <fieldset>
                         <input

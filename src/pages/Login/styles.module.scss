@@ -14,6 +14,7 @@
         transition: 0.4s;
         color: var(--text);
         cursor: pointer;
+        font-size: var(--h6);
     }
 
     a:hover,
@@ -27,7 +28,7 @@
     flex-direction: column;
     align-items: center;
 
-    h3 {
+    h2 {
         margin-bottom: 1rem;
     }
 }
@@ -37,6 +38,7 @@
     height: 4rem;
     border: none;
 
+    input[type='text'],
     input {
         width: 100%;
         height: 100%;
@@ -45,11 +47,12 @@
         outline: none;
         transition: 0.4s;
         color: var(--text);
-        padding-left: 2rem;
-        padding-right: 2rem;
+        padding: 1rem 3rem;
+        background: var(--neutral);
+        font-size: var(--h6);
     }
 }
-
+input[type='text']:focus,
 input:focus {
     border: 2px solid var(--highlight);
     box-shadow:
@@ -58,6 +61,49 @@ input:focus {
 }
 
 .image {
-    display: none;
-    background: pink;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+        font-size: var(--h6);
+        color: var(--primary);
+    }
+    figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 0;
+        max-width: 10rem;
+    }
+    span {
+        display: none;
+    }
+}
+
+@media (min-width: 675px) {
+    .wrapper {
+        flex-direction: row;
+        height: calc(100vh - 4rem);
+        margin: 0 auto;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .image {
+        max-width: 55%;
+
+        figure {
+            max-width: 30rem;
+        }
+
+        h3 {
+            font-size: var(--h3);
+        }
+
+        span {
+            display: block;
+            color: var(--highlight);
+        }
+    }
 }
