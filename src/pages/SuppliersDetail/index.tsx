@@ -1,7 +1,10 @@
 import { Link, useParams } from 'react-router-dom';
 import { FormEvent } from 'react';
 
-import { useGetSuppliesByIdQuery } from '../../services/api';
+import {
+    useGetSuppliesByIdQuery,
+    useUpdateSupplierMutation,
+} from '../../services/api';
 import FormInputText from '../../components/FormInputText';
 
 import styles from './styles.module.css';
@@ -9,6 +12,9 @@ import styles from './styles.module.css';
 function SuppliersDetail() {
     const { id } = useParams();
     const { data, isLoading } = useGetSuppliesByIdQuery(id || '');
+    const [update, { isLoading: isLoadingUpdate }] =
+        useUpdateSupplierMutation();
+    console.log({ isLoadingUpdate });
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -16,21 +22,30 @@ function SuppliersDetail() {
         const formData = new FormData(event.currentTarget);
 
         const data = {
-            name: formData.get('name') ?? '',
-            cnpj: formData.get('cnpj') ?? '',
-            phoneNumber: formData.get('phoneNumber') ?? '',
-            zipCode: formData.get('zipCode') ?? '',
-            address: formData.get('address') ?? '',
-            number: formData.get('number') ?? '',
-            complement: formData.get('complement') ?? '',
-            neighborhood: formData.get('neighborhood') ?? '',
-            city: formData.get('city') ?? '',
-            state: formData.get('state') ?? '',
-            ownerName: formData.get('ownerName') ?? '',
-            ownerEmail: formData.get('ownerEmail') ?? '',
-            ownerPhoneNumber: formData.get('ownerPhoneNumber') ?? '',
+            publicId: id,
+            name: formData.get('name'),
+            cnpj: formData.get('cnpj'),
+            phoneNumber: formData.get('phoneNumber'),
+            zipCode: formData.get('zipCode'),
+            address: formData.get('address'),
+            number: formData.get('number'),
+            complement: formData.get('complement'),
+            neighborhood: formData.get('neighborhood'),
+            city: formData.get('city'),
+            state: formData.get('state'),
+            ownerName: formData.get('ownerName'),
+            ownerEmail: formData.get('ownerEmail'),
+            ownerPhoneNumber: formData.get('ownerPhoneNumber'),
         };
         console.log(data);
+        try {
+            const resp = await update(data).unwrap();
+            console.log({ resp });
+            // dispatch(setCredentials({ token: access_token }));
+            //navigate('/');
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     if (isLoading || !data) {

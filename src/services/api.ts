@@ -7,11 +7,13 @@ export const api = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
         baseUrl: 'https://test-case.cayena.io',
+        // credentials: 'same-origin',
         prepareHeaders: (headers, { getState }) => {
             // By default, if we have a token in the store, let's use that for authenticated requests
             const token = (getState() as RootState).auth.token;
             if (token) {
                 headers.set('authorization', `Bearer ${token}`);
+                headers.set('Content-Type', 'application/json');
             }
             return headers;
         },
@@ -29,6 +31,9 @@ export const api = createApi({
                         'application/x-www-form-urlencoded; charset=UTF-8',
                 },
             }),
+            transformErrorResponse: () => {
+                localStorage.clear();
+            },
         }),
         getSupplies: builder.query({
             query: () => ({ url: 'suppliers' }),
@@ -45,6 +50,25 @@ export const api = createApi({
                 localStorage.clear();
             },
         }),
+        updateSupplier: builder.mutation({
+            query: (body) => ({
+                url: 'suppliers',
+                method: 'PUT',
+                body,
+                headers: {
+                    Accept: '*',
+                    //'Content-Type': '*',
+                    //'Access-Control-Allow-Origin': '*',
+                    //'Access-Control-Allow-Headers': '*',
+                    'Access-Control-Allow-Methods': '*,PUT',
+                    'Access-Control-Allow-Headers':
+                        'Origin, X-Requested-With ,allow-access',
+                },
+            }),
+            transformErrorResponse: () => {
+                localStorage.clear();
+            },
+        }),
     }),
 });
 
@@ -52,4 +76,5 @@ export const {
     useLoginMutation,
     useGetSuppliesQuery,
     useGetSuppliesByIdQuery,
+    useUpdateSupplierMutation,
 } = api;
