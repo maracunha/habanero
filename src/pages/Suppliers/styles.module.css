@@ -6,4 +6,8 @@
     h2 {
         margin: 2rem 0;
     }
+
+    ol {
+        margin-bottom: 1rem;
+    }
 }

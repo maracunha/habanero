@@ -39,7 +39,6 @@ export const api = createApi({
             query: () => ({ url: 'suppliers' }),
             transformResponse: (response: Suppliers[]) => response,
             transformErrorResponse: (response) => {
-                console.log('aouaue', response);
                 localStorage.clear();
             },
         }),
