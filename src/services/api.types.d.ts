@@ -13,8 +13,6 @@ export interface Supplier {
     ownerName: string;
     ownerEmail: string;
     ownerPhoneNumber: string;
-    createdAt: string;
-    updatedAt: string;
 }
 
 export interface Suppliers {

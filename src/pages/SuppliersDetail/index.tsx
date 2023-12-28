@@ -1,5 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { FormEvent } from 'react';
 
 import { useGetSuppliesByIdQuery } from '../../services/api';
 import FormInputText from '../../components/FormInputText';
@@ -9,9 +9,29 @@ import styles from './styles.module.css';
 function SuppliersDetail() {
     const { id } = useParams();
     const { data, isLoading } = useGetSuppliesByIdQuery(id || '');
-    console.log({ data, isLoading });
 
-    const [disabled, setDisabled] = useState(true);
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const formData = new FormData(event.currentTarget);
+
+        const data = {
+            name: formData.get('name') ?? '',
+            cnpj: formData.get('cnpj') ?? '',
+            phoneNumber: formData.get('phoneNumber') ?? '',
+            zipCode: formData.get('zipCode') ?? '',
+            address: formData.get('address') ?? '',
+            number: formData.get('number') ?? '',
+            complement: formData.get('complement') ?? '',
+            neighborhood: formData.get('neighborhood') ?? '',
+            city: formData.get('city') ?? '',
+            state: formData.get('state') ?? '',
+            ownerName: formData.get('ownerName') ?? '',
+            ownerEmail: formData.get('ownerEmail') ?? '',
+            ownerPhoneNumber: formData.get('ownerPhoneNumber') ?? '',
+        };
+        console.log(data);
+    };
 
     if (isLoading || !data) {
         return 'loading...';
@@ -19,81 +39,84 @@ function SuppliersDetail() {
 
     return (
         <section className={styles.wrapper}>
-            <Link to="/">Back</Link>
-            <button onClick={() => setDisabled(false)}>Edit</button>
-            <form action="">
+            <form id="supplier" onSubmit={handleSubmit}>
                 <h2>Suppliers Detail</h2>
-                <ol>
+                <div className={styles.header}>
+                    <Link to="/">Back</Link>
+                    <button type="submit">Submit</button>
+                </div>
+
+                <fieldset>
                     <FormInputText
                         label="Name"
-                        value={data.name}
-                        disabled={disabled}
+                        name="name"
+                        initialValue={data.name}
                     />
                     <FormInputText
                         label="CNPJ"
-                        value={data.cnpj}
-                        disabled={disabled}
+                        name="cnpj"
+                        initialValue={data.cnpj}
                     />
                     <FormInputText
                         label="Phone Number"
-                        value={data.name}
-                        disabled={disabled}
+                        name="phoneNumber"
+                        initialValue={data.phoneNumber}
                     />
-                </ol>
+                </fieldset>
                 <h3>Owner</h3>
                 <ol>
                     <FormInputText
                         label="Name"
-                        value={data.ownerName}
-                        disabled={disabled}
+                        name="ownerName"
+                        initialValue={data.ownerName}
                     />
                     <FormInputText
                         label="email"
-                        value={data.ownerEmail}
-                        disabled={disabled}
+                        name="ownerEmail"
+                        initialValue={data.ownerEmail}
                     />
                     <FormInputText
                         label="Phone Number"
-                        value={data.ownerPhoneNumber}
-                        disabled={disabled}
+                        name="ownerPhoneNumber"
+                        initialValue={data.ownerPhoneNumber}
                     />
                 </ol>
                 <h3>Address</h3>
                 <ol>
                     <FormInputText
                         label="Address"
-                        value={data.address}
-                        disabled={disabled}
+                        name="address"
+                        initialValue={data.address}
                     />
                     <FormInputText
                         label="Number"
-                        value={data.number}
-                        disabled={disabled}
+                        name="number"
+                        initialValue={data.number}
                     />
                     <FormInputText
                         label="Complement"
-                        value={data.complement}
-                        disabled={disabled}
+                        name="complement"
+                        initialValue={data.complement}
                     />
                     <FormInputText
                         label="Neighborhood"
-                        value={data.neighborhood}
-                        disabled={disabled}
+                        name="neighborhood"
+                        initialValue={data.neighborhood}
                     />
                     <FormInputText
                         label="City"
-                        value={data.city}
-                        disabled={disabled}
+                        name="city"
+                        initialValue={data.city}
                     />
                     <FormInputText
                         label="State"
-                        value={data.state}
-                        disabled={disabled}
+                        name="state"
+                        initialValue={data.state}
                     />
                     <FormInputText
                         label="Zip Code"
-                        value={data.zipCode}
-                        disabled={disabled}
+                        name="zipCode"
+                        initialValue={data.zipCode}
                     />
                 </ol>
             </form>

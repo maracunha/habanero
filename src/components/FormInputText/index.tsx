@@ -1,14 +1,23 @@
+import { useState } from 'react';
+
 interface IFormInputText {
+    name: string;
     label: string;
-    value: string;
-    disabled: boolean;
+    initialValue: string;
 }
-const FormInputText = ({ label, value, disabled }: IFormInputText) => {
-    const name = label.replace(/ /g, '');
+const FormInputText = ({ label, name, initialValue }: IFormInputText) => {
+    const [value, setValue] = useState(initialValue);
+
     return (
         <li>
             <label htmlFor={name}>{label}</label>
-            <input type="text" name={name} value={value} disabled={disabled} />
+            <input
+                type="text"
+                id={name}
+                name={name}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+            />
         </li>
     );
 };
