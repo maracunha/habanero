@@ -10,17 +10,28 @@ interface Line {
 
 function Line({ data, showEdit = false }: Line) {
     return (
-        <ol key={data.publicId} className={styles.line}>
-            <li>{data.name}</li>
-            <li>{data.cnpj}</li>
-            <li>{data.phoneNumber}</li>
-            <li>{data.ownerName}</li>
-            {showEdit && (
+        <>
+            <ol key={data.publicId} className={styles.line}>
                 <li>
-                    <Link to={`/supplier/${data.publicId}`}>Edit</Link>
+                    <span>Name:</span> {data.name}
                 </li>
-            )}
-        </ol>
+                <li>
+                    <span>CNPJ:</span> {data.cnpj}
+                </li>
+                <li>
+                    <span>Phone Number:</span> {data.phoneNumber}
+                </li>
+                <li>
+                    <span>Owener Name:</span> {data.ownerName}
+                </li>
+                {showEdit && (
+                    <li>
+                        <Link to={`/supplier/${data.publicId}`}>Edit</Link>
+                    </li>
+                )}
+            </ol>
+            <hr />
+        </>
     );
 }
 

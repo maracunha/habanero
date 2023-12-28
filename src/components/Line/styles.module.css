@@ -1,3 +1,28 @@
 .line {
     display: flex;
+    flex-direction: column;
+    border: 1px solid var(--primary);
+    padding: 1rem 2rem;
+
+    span {
+        font-weight: bold;
+        padding-right: 1rem;
+    }
+
+    a {
+        display: block;
+        margin: 1rem 2rem;
+        text-align: center;
+        background-color: var(--accent);
+        border: 2px solid var(--highlight);
+        border-radius: 50px;
+        outline: none;
+        transition: 0.4s;
+        color: var(--text);
+        cursor: pointer;
+    }
+
+    a:hover {
+        background-color: var(--highlight);
+    }
 }
