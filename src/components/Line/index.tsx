@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { Supplier } from '../../services/api.types';
+import { Suppliers } from '../../services/api.types';
 
 import styles from './styles.module.css';
 
-function Line(data: Supplier) {
+function Line({ ...data }: Suppliers) {
     return (
         <ol key={data.publicId} className={styles.line}>
             <li>{data.name}</li>

@@ -1,6 +1,6 @@
 function NotFound() {
-    console.log('aoeaueu');
-    return <h1>404</h1>;
+    // TODO not found poge
+    return <h2>404</h2>;
 }
 
 export default NotFound;
