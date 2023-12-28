@@ -1,0 +1,25 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 4rem);
+    justify-content: center;
+    align-items: center;
+
+    a {
+        display: block;
+        margin: 1rem 2rem;
+        text-align: center;
+        background-color: var(--accent);
+        border: 2px solid var(--highlight);
+        border-radius: 50px;
+        outline: none;
+        transition: 0.4s;
+        color: var(--text);
+        cursor: pointer;
+        width: 7rem;
+    }
+
+    a:hover {
+        background-color: var(--highlight);
+    }
+}
