@@ -9,7 +9,6 @@ interface Line {
 }
 
 function Line({ data, showEdit = false }: Line) {
-    console.log(data.publicId);
     return (
         <ol className={styles.line}>
             <li>

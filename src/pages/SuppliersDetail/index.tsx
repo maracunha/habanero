@@ -1,5 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
 import { FormEvent } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import Loader from '../../components/Loader';
 
 import {
     useGetSuppliesByIdQuery,
@@ -14,7 +15,6 @@ function SuppliersDetail() {
     const { data, isLoading } = useGetSuppliesByIdQuery(id || '');
     const [update, { isLoading: isLoadingUpdate }] =
         useUpdateSupplierMutation();
-    console.log({ isLoadingUpdate });
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -47,8 +47,8 @@ function SuppliersDetail() {
         }
     };
 
-    if (isLoading || !data) {
-        return 'loading...';
+    if (isLoading || !data || isLoadingUpdate) {
+        return <Loader />;
     }
 
     return (

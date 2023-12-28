@@ -12,9 +12,7 @@ function Login() {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const [login, { isLoading }] = useLoginMutation();
-
-    console.log({ isLoading });
+    const [login] = useLoginMutation();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();

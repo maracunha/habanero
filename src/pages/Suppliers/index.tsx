@@ -1,14 +1,14 @@
 import { useGetSuppliesQuery } from '../../services/api';
 import Line from '../../components/Line';
+import Loader from '../../components/Loader';
+
 import styles from './styles.module.css';
 
 function Suppliers() {
     const { data, isLoading } = useGetSuppliesQuery('');
 
-    console.log('suppliess', data);
-
     if (isLoading) {
-        return 'loading...';
+        return <Loader />;
     }
 
     return (
