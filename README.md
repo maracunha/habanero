@@ -3,54 +3,36 @@
 Elevando o sabor, definindo a qualidade.
 O ingrediente secreto para o sucesso do seu negócio com preços irresistíveis.
 
-## stack
+My solution for: [Cayena frontend Challenge](https://github.com/Poupachef/jobs/blob/master/frontend/frontend-developer.md)
 
-vite with wws
-react
-typescript
+## Live test
 
-rusky
-preattier
-eslint
+Here you can access the [Habanero Challenge](https://habanero.vercel.app/)
 
-## Paleta de Cores para Habanero - Light Mode:
+## Technologies
 
-Vermelho Ardente: #E53935
+These are main used technologies
 
-Representando a paixão pelo sabor.
-Verde Fresco: #4CAF50
+-   [React 18](https://react.dev/)
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [React Router v6](https://reactrouter.com/en/main)
+-   [Redux Toolkit](https://redux-toolkit.js.org/)
+-   [Vite](https://vitejs.dev/guide/)
+-   [Rusky](https://github.com/ohbarye/rusky)
 
-Evocando frescor e ingredientes naturais.
-Amarelo Vibrante: #FFC107
+For lint and code formatter
 
-Transmitindo energia e vitalidade.
-Laranja Intenso: #FF5722
+-   [Eslint](https://eslint.org/)
+-   [Prettier](https://prettier.io/)
 
-Adicionando um toque de calor e entusiasmo.
-Cinza Claro: #E0E0E0
+## Application setup guide
 
-Neutralidade e equilíbrio.
-Preto Profundo: #000000
+Clone the repository, then
 
-Elegância e contraste.
+```bash
+npm install
+```
 
-## Paleta de Cores para Habanero - Dark Mode:
-
-Vermelho Profundo: #C62828
-
-Sugerindo sofisticação e intensidade.
-Verde Profundo: #388E3C
-
-Mantendo a sensação de frescor em ambientes mais escuros.
-Amarelo Noturno: #FFA000
-
-Uma tonalidade mais suave para um toque de elegância.
-Laranja Sombrio: #E64A19
-
-Adicionando calor de maneira sutil na escuridão.
-Cinza Escuro: #757575
-
-Profundidade e refinamento na escuridão.
-Preto Absoluto: #121212
-
-Intensidade máxima para destaque.
+```bash
+npm run dev
+```
