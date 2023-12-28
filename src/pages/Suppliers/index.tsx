@@ -14,10 +14,16 @@ function Suppliers() {
     return (
         <section className={styles.wrapper}>
             <h2>Suppliers</h2>
-            {data &&
-                data.map((supplier) => (
-                    <Line key={supplier.publicId} data={supplier} showEdit />
-                ))}
+            <div className={styles.cards}>
+                {data &&
+                    data.map((supplier) => (
+                        <Line
+                            key={supplier.publicId}
+                            data={supplier}
+                            showEdit
+                        />
+                    ))}
+            </div>
         </section>
     );
 }

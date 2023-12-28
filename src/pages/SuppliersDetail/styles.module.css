@@ -20,4 +20,39 @@
         color: var(--text);
         font-size: var(--base-size);
     }
+
+    a,
+    button {
+        width: 7rem;
+        height: 2rem;
+        background-color: var(--accent);
+        border: 2px solid var(--highlight);
+        border-radius: 50px;
+        outline: none;
+        transition: 0.4s;
+        color: var(--text);
+        cursor: pointer;
+    }
+
+    a:hover,
+    button:hover {
+        background-color: var(--highlight);
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+
+    fieldset {
+        text-align: left;
+    }
+}
+
+@media (min-width: 675px) {
+    .wrapper {
+        max-width: 40rem;
+        margin: 0 auto;
+        border: none;
+    }
 }

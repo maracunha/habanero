@@ -11,3 +11,13 @@
         margin-bottom: 1rem;
     }
 }
+
+@media (min-width: 675px) {
+    .cards {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        flex-flow: wrap;
+        justify-content: center;
+    }
+}

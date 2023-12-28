@@ -37,7 +37,6 @@ function SuppliersDetail() {
             ownerEmail: formData.get('ownerEmail'),
             ownerPhoneNumber: formData.get('ownerPhoneNumber'),
         };
-        console.log(data);
         try {
             const resp = await update(data).unwrap();
             console.log({ resp });
@@ -55,85 +54,94 @@ function SuppliersDetail() {
     return (
         <section className={styles.wrapper}>
             <form id="supplier" onSubmit={handleSubmit}>
-                <h2>Suppliers Detail</h2>
+                <h2>Suppliers Detail Edit</h2>
                 <div className={styles.header}>
                     <Link to="/">Back</Link>
                     <button type="submit">Submit</button>
                 </div>
 
-                <fieldset>
-                    <FormInputText
-                        label="Name"
-                        name="name"
-                        initialValue={data.name}
-                    />
-                    <FormInputText
-                        label="CNPJ"
-                        name="cnpj"
-                        initialValue={data.cnpj}
-                    />
-                    <FormInputText
-                        label="Phone Number"
-                        name="phoneNumber"
-                        initialValue={data.phoneNumber}
-                    />
-                </fieldset>
-                <h3>Owner</h3>
-                <ol>
-                    <FormInputText
-                        label="Name"
-                        name="ownerName"
-                        initialValue={data.ownerName}
-                    />
-                    <FormInputText
-                        label="email"
-                        name="ownerEmail"
-                        initialValue={data.ownerEmail}
-                    />
-                    <FormInputText
-                        label="Phone Number"
-                        name="ownerPhoneNumber"
-                        initialValue={data.ownerPhoneNumber}
-                    />
-                </ol>
-                <h3>Address</h3>
-                <ol>
-                    <FormInputText
-                        label="Address"
-                        name="address"
-                        initialValue={data.address}
-                    />
-                    <FormInputText
-                        label="Number"
-                        name="number"
-                        initialValue={data.number}
-                    />
-                    <FormInputText
-                        label="Complement"
-                        name="complement"
-                        initialValue={data.complement}
-                    />
-                    <FormInputText
-                        label="Neighborhood"
-                        name="neighborhood"
-                        initialValue={data.neighborhood}
-                    />
-                    <FormInputText
-                        label="City"
-                        name="city"
-                        initialValue={data.city}
-                    />
-                    <FormInputText
-                        label="State"
-                        name="state"
-                        initialValue={data.state}
-                    />
-                    <FormInputText
-                        label="Zip Code"
-                        name="zipCode"
-                        initialValue={data.zipCode}
-                    />
-                </ol>
+                <div className={styles.form}>
+                    <fieldset>
+                        <legend>
+                            <h3>Main</h3>
+                        </legend>
+                        <FormInputText
+                            label="Name"
+                            name="name"
+                            initialValue={data.name}
+                        />
+                        <FormInputText
+                            label="CNPJ"
+                            name="cnpj"
+                            initialValue={data.cnpj}
+                        />
+                        <FormInputText
+                            label="Phone Number"
+                            name="phoneNumber"
+                            initialValue={data.phoneNumber}
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <h3>Owner</h3>
+                        </legend>
+                        <FormInputText
+                            label="Name"
+                            name="ownerName"
+                            initialValue={data.ownerName}
+                        />
+                        <FormInputText
+                            label="email"
+                            name="ownerEmail"
+                            initialValue={data.ownerEmail}
+                        />
+                        <FormInputText
+                            label="Phone Number"
+                            name="ownerPhoneNumber"
+                            initialValue={data.ownerPhoneNumber}
+                        />
+                    </fieldset>
+                    <fieldset>
+                        <legend>
+                            <h3>Address</h3>
+                        </legend>
+                        <FormInputText
+                            label="Address"
+                            name="address"
+                            initialValue={data.address}
+                        />
+                        <FormInputText
+                            label="Number"
+                            name="number"
+                            initialValue={data.number}
+                        />
+                        <FormInputText
+                            label="Complement"
+                            name="complement"
+                            initialValue={data.complement}
+                        />
+                        <FormInputText
+                            label="Neighborhood"
+                            name="neighborhood"
+                            initialValue={data.neighborhood}
+                        />
+                        <FormInputText
+                            label="City"
+                            name="city"
+                            initialValue={data.city}
+                        />
+                        <FormInputText
+                            label="State"
+                            name="state"
+                            initialValue={data.state}
+                        />
+                        <FormInputText
+                            label="Zip Code"
+                            name="zipCode"
+                            initialValue={data.zipCode}
+                        />
+                    </fieldset>
+                </div>
             </form>
         </section>
     );

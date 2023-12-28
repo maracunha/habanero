@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import styles from './styles.module.css';
+
 interface IFormInputText {
     name: string;
     label: string;
@@ -9,8 +11,8 @@ const FormInputText = ({ label, name, initialValue }: IFormInputText) => {
     const [value, setValue] = useState(initialValue);
 
     return (
-        <li>
-            <label htmlFor={name}>{label}</label>
+        <li className={styles.line}>
+            <label htmlFor={name}>{label}: </label>
             <input
                 type="text"
                 id={name}
