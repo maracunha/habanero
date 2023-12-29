@@ -52,7 +52,7 @@ function Login() {
             </div>
 
             <div className={styles.form}>
-                <h2>Log in</h2>
+                <h2>Login</h2>
                 <form id="login" onSubmit={handleSubmit}>
                     <fieldset>
                         <input
@@ -72,13 +72,8 @@ function Login() {
                         />
                     </fieldset>
                     <fieldset>
-                        <button
-                            name="submit"
-                            type="submit"
-                            id="contact-submit"
-                            data-submit="...Sending"
-                        >
-                            Submit
+                        <button name="submit" type="submit" id="submit">
+                            Entrar
                         </button>
                     </fieldset>
                 </form>

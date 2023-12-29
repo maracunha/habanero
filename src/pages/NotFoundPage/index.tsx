@@ -7,7 +7,7 @@ function NotFound() {
         <div className={styles.error}>
             <h3>Oops! There's nothing here</h3>
             <p>
-                <Link to="/">Back</Link>
+                <Link to="/">Voltar</Link>
             </p>
         </div>
     );

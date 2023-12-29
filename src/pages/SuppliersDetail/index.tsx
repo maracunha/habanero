@@ -54,19 +54,19 @@ function SuppliersDetail() {
     return (
         <section className={styles.wrapper}>
             <form id="supplier" onSubmit={handleSubmit}>
-                <h2>Suppliers Detail Edit</h2>
+                <h2>Editar detalhes dos fornecedor</h2>
                 <div className={styles.header}>
-                    <Link to="/">Back</Link>
-                    <button type="submit">Submit</button>
+                    <Link to="/">Voltar</Link>
+                    <button type="submit">Enviar</button>
                 </div>
 
                 <div className={styles.form}>
                     <fieldset>
                         <legend>
-                            <h3>Main</h3>
+                            <h3>Principal</h3>
                         </legend>
                         <FormInputText
-                            label="Name"
+                            label="Nome"
                             name="name"
                             initialValue={data.name}
                         />
@@ -76,62 +76,62 @@ function SuppliersDetail() {
                             initialValue={data.cnpj}
                         />
                         <FormInputText
-                            label="Phone Number"
+                            label="Telefone"
                             name="phoneNumber"
                             initialValue={data.phoneNumber}
                         />
                     </fieldset>
                     <fieldset>
                         <legend>
-                            <h3>Owner</h3>
+                            <h3>Proprietário</h3>
                         </legend>
                         <FormInputText
-                            label="Name"
+                            label="Nome"
                             name="ownerName"
                             initialValue={data.ownerName}
                         />
                         <FormInputText
-                            label="email"
+                            label="Email"
                             name="ownerEmail"
                             initialValue={data.ownerEmail}
                         />
                         <FormInputText
-                            label="Phone Number"
+                            label="Telefone"
                             name="ownerPhoneNumber"
                             initialValue={data.ownerPhoneNumber}
                         />
                     </fieldset>
                     <fieldset>
                         <legend>
-                            <h3>Address</h3>
+                            <h3>Endereço</h3>
                         </legend>
                         <FormInputText
-                            label="Address"
+                            label="Endereço"
                             name="address"
                             initialValue={data.address}
                         />
                         <FormInputText
-                            label="Number"
+                            label="Número"
                             name="number"
                             initialValue={data.number}
                         />
                         <FormInputText
-                            label="Complement"
+                            label="Complemento"
                             name="complement"
                             initialValue={data.complement}
                         />
                         <FormInputText
-                            label="Neighborhood"
+                            label="Bairro"
                             name="neighborhood"
                             initialValue={data.neighborhood}
                         />
                         <FormInputText
-                            label="City"
+                            label="Cidade"
                             name="city"
                             initialValue={data.city}
                         />
                         <FormInputText
-                            label="State"
+                            label="Estado"
                             name="state"
                             initialValue={data.state}
                         />

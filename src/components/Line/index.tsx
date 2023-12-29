@@ -12,20 +12,20 @@ function Line({ data, showEdit = false }: Line) {
     return (
         <ol className={styles.line}>
             <li>
-                <span>Name:</span> {data.name}
+                <span>Nome:</span> {data.name}
             </li>
             <li>
                 <span>CNPJ:</span> {data.cnpj}
             </li>
             <li>
-                <span>Phone Number:</span> {data.phoneNumber}
+                <span>Telefone:</span> {data.phoneNumber}
             </li>
             <li>
-                <span>Owener Name:</span> {data.ownerName}
+                <span>Proprietário:</span> {data.ownerName}
             </li>
             {showEdit && (
                 <li>
-                    <Link to={`/supplier/${data.publicId}`}>Edit</Link>
+                    <Link to={`/supplier/${data.publicId}`}>Editar</Link>
                 </li>
             )}
         </ol>

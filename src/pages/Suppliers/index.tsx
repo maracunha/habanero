@@ -13,7 +13,7 @@ function Suppliers() {
 
     return (
         <section className={styles.wrapper}>
-            <h2>Suppliers</h2>
+            <h2>Fornecedores</h2>
             <div className={styles.cards}>
                 {data &&
                     data.map((supplier) => (
