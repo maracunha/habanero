@@ -54,7 +54,6 @@ export const api = createApi({
                 url: 'suppliers',
                 method: 'PUT',
                 body,
-                headers: {},
             }),
             transformErrorResponse: () => {
                 localStorage.clear();
