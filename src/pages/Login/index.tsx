@@ -56,7 +56,7 @@ function Login() {
                 <form id="login" onSubmit={handleSubmit}>
                     <fieldset>
                         <input
-                            placeholder="Username"
+                            placeholder="usuário"
                             name="username"
                             type="text"
                             required
@@ -65,7 +65,7 @@ function Login() {
                     </fieldset>
                     <fieldset>
                         <input
-                            placeholder="Password"
+                            placeholder="senha"
                             name="password"
                             type="password"
                             required
