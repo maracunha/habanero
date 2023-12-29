@@ -59,7 +59,6 @@ function Login() {
                             placeholder="Username"
                             name="username"
                             type="text"
-                            tabIndex={1}
                             required
                             autoFocus
                         />
@@ -69,7 +68,6 @@ function Login() {
                             placeholder="Password"
                             name="password"
                             type="password"
-                            tabIndex={2}
                             required
                         />
                     </fieldset>
@@ -78,7 +76,6 @@ function Login() {
                             name="submit"
                             type="submit"
                             id="contact-submit"
-                            tabIndex={3}
                             data-submit="...Sending"
                         >
                             Submit

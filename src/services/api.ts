@@ -6,10 +6,8 @@ import { Supplier, Suppliers } from './api.types';
 export const api = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
-        mode: 'cors',
-        credentials: 'same-origin',
+        credentials: 'omit',
         baseUrl: 'https://test-case.cayena.io',
-        // credentials: 'same-origin',
         prepareHeaders: (headers, { getState }) => {
             // By default, if we have a token in the store, let's use that for authenticated requests
             const token = (getState() as RootState).auth.token;

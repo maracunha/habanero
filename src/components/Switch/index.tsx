@@ -11,6 +11,7 @@ function Switch() {
             <label className={styles.switch}>
                 <input
                     type="checkbox"
+                    aria-label="theme"
                     onChange={handleChange}
                     checked={theme === 'dark'}
                 />
