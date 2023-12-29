@@ -11,7 +11,7 @@
 
     a {
         display: block;
-        margin: 1rem 2rem;
+        margin: 1rem auto;
         text-align: center;
         background-color: var(--accent);
         border: 2px solid var(--highlight);
@@ -20,6 +20,7 @@
         transition: 0.4s;
         color: var(--text);
         cursor: pointer;
+        width: 6rem;
     }
 
     a:hover {
