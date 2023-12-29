@@ -6,6 +6,8 @@ import { Supplier, Suppliers } from './api.types';
 export const api = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
+        mode: 'cors',
+        credentials: 'same-origin',
         baseUrl: 'https://test-case.cayena.io',
         // credentials: 'same-origin',
         prepareHeaders: (headers, { getState }) => {
@@ -54,15 +56,7 @@ export const api = createApi({
                 url: 'suppliers',
                 method: 'PUT',
                 body,
-                headers: {
-                    Accept: '*',
-                    //'Content-Type': '*',
-                    //'Access-Control-Allow-Origin': '*',
-                    //'Access-Control-Allow-Headers': '*',
-                    'Access-Control-Allow-Methods': '*,PUT',
-                    'Access-Control-Allow-Headers':
-                        'Origin, X-Requested-With ,allow-access',
-                },
+                headers: {},
             }),
             transformErrorResponse: () => {
                 localStorage.clear();
