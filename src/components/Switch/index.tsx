@@ -7,7 +7,7 @@ function Switch() {
 
     return (
         <div className={styles.wrapper}>
-            <span>{theme} mode</span>
+            <span data-testid="theme">{theme} mode</span>
             <label className={styles.switch}>
                 <input
                     type="checkbox"
