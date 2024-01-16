@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../hooks/reduxHooks';
 import { useLoginMutation } from '../../services/api';
 import { setCredentials } from '../../services/authSlice';
 
-import styles from './styles.module.scss';
+import styles from './styles.module.css';
 import logo from '../../assets/habanero.svg';
 
 function Login() {
