@@ -8,7 +8,7 @@ function Header() {
         <header className={styles.header}>
             <div>
                 <Link to="/">
-                    <h3>Habanero</h3>
+                    <h1 className="h3">Habanero</h1>
                 </Link>
                 <Switch />
             </div>
