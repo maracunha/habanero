@@ -3,6 +3,8 @@ import { RootState } from '../store';
 import qs from 'qs';
 import { Supplier, Suppliers } from './api.types';
 
+const AUTH_TOKEN = import.meta.env.VITE_AUTH_TOKEN;
+
 export const api = createApi({
     reducerPath: 'authApi',
     baseQuery: fetchBaseQuery({
@@ -25,8 +27,7 @@ export const api = createApi({
                 method: 'POST',
                 body: qs.stringify(credentials),
                 headers: {
-                    authorization:
-                        'Basic Y2F5ZW5hLXRlc3Q6ZGQzZWQ5MGUtNjY3Zi00MjQ4LWE2NzEtOTI2NjI2MWRiYTVi',
+                    authorization: `Basic ${AUTH_TOKEN}`,
                     'Content-type':
                         'application/x-www-form-urlencoded; charset=UTF-8',
                 },
