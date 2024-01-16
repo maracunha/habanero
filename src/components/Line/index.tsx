@@ -10,7 +10,7 @@ interface Line {
 
 function Line({ data, showEdit = false }: Line) {
     return (
-        <ol className={styles.line}>
+        <ol className={styles.line} data-testid="line">
             <li>
                 <span>Nome:</span> {data.name}
             </li>
