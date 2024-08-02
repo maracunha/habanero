@@ -1,4 +1,4 @@
-# Habanero
+# Habanero Challenge
 
 Welcome to Habanero, my solution for the [Cayena frontend Challenge](https://github.com/Poupachef/jobs/blob/master/frontend/frontend-developer.md). Habanero
 is not just a website; it's a flavorful journey into elevating user experiences
