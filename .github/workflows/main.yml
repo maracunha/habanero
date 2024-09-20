@@ -21,6 +21,7 @@ jobs:
             - name: Bump version and push tag
               uses: anothrNick/github-tag-action@v1 # Don't use @master or @v1 unless you're happy to test the latest version
               env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   WITH_V: true
                   #PRERELEASE: true
             - name: Bump package version
