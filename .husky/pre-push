@@ -23,11 +23,37 @@ do
     fi
 done
 
+# Get the current branch name
+current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-# Check for a commit message matching the pattern
-if git log --format=%B -n 1000 | grep -qE "Upgrade to [0-9]+\.[0-9]+\.[0-9]+ for reasons"; then
-    echo "Version upgrade commit found. No action needed."
+
+# Check if the branch exists on the remote
+if ! git ls-remote --exit-code --heads origin $current_branch > /dev/null 2>&1; then
+    # Branch doesn't exist on remote, so this is the first push
+    echo "First push of branch $current_branch. Checking version..."
+    if ! git diff -U0 origin/main..HEAD -- package.json | grep -qE 'version'; then
+        echo "ERROR: The 'version' field in package.json must be updated for the first push of a new branch."
+        exit 1
+    fi
 else
-    echo "No version upgrade commit found. Running npm version patch..."
-    npm version patch -m "Upgrade to %s for reasons"
+    echo "Branch $current_branch already exists on remote. Skipping version check."
+fi
+
+# Extract current version from package.json
+current_version=$(jq -r .version package.json)
+
+# Extract the part before the first slash
+branch_prefix=${current_branch%%/*}
+
+# Find the latest commit with the upgrade message and extract its version
+latest_commit_version=$(git log --format=%B -n 1000 | grep -oP "Upgrade to \K[0-9]+\.[0-9]+\.[0-9]+" | head -n 1)
+
+if [ -z "$latest_commit_version" ]; then
+    echo "No previous version upgrade commit found. Running npm version patch..."
+    npm version $branch_prefix -m "Upgrade to %s for reasons"
+elif [ "$current_version" != "$latest_commit_version" ]; then
+    echo "Current version ($current_version) differs from latest commit version ($latest_commit_version). Running npm version patch..."
+    npm version $branch_prefix -m "Upgrade to %s for reasons"
+else
+    echo "Current version ($current_version) matches latest commit version. No action needed."
 fi
