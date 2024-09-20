@@ -25,9 +25,7 @@ jobs:
 
             - name: Bump Version Package Json
               uses: ramonpaolo/bump-version@v2.3.1
-              env:
-                  tag-name: ${{ git for-each-ref --sort=-v:refname --format '%(refname:lstrip=2)' | grep -E "$tagFmt" | head -n 1 }}
               with:
-                  tag: ${{ env.tag-name }}
+                  tag: ${{ env.new_tag }}
                   commit: true
                   branch_to_push: 'main'
