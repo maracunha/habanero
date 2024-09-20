@@ -23,6 +23,8 @@ do
     fi
 done
 
+set -x
+
 # Extract current version from package.json
 current_version=$(jq -r .version package.json)
 
