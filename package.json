@@ -1,7 +1,7 @@
 {
   "name": "habanero",
   "private": true,
-  "version": "",
+  "version": "0.8.0",
   "type": "module",
   "author": "Renan Marangon",
   "scripts": {
