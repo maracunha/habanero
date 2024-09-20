@@ -1,7 +1,7 @@
 {
   "name": "habanero",
   "private": true,
-  "version": "git for-each-ref --sort=-:refname --format '%(refname:lstrip=2)' | grep -E \"$tagFmt\" | head -n 1",
+  "version": "",
   "type": "module",
   "author": "Renan Marangon",
   "scripts": {
