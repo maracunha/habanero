@@ -26,9 +26,11 @@ jobs:
 
             - name: Bump Version Package Json
               uses: ramonpaolo/bump-version@v2.3.1
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token
               with:
                   tag: ${{ steps.tag.outputs.new_tag }}
-                  commit: true
+                  commit: false
                   branch_to_push: 'main'
+
+            - name: Push changes
+              run: |
+                  git push origin main -f
