@@ -31,6 +31,3 @@ jobs:
                   commit: false
                   branch_to_push: 'main'
 
-            - name: Push changes
-              run: |
-                  git push origin main -f

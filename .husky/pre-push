@@ -1,0 +1,39 @@
+#!/bin/bash
+
+remote="$1"
+url="$2"
+
+# Specify your updated branch naming convention regex pattern
+branch_naming_pattern="^refs/heads/(minor|patch|major)/[a-z0-9-]+$"
+
+while read local_ref local_sha
+do
+    echo "ref is $local_ref"
+
+    if [[ "$local_ref" == "refs/heads/main" ]]; then
+        # Allow pushing to main branch without enforcing naming convention
+        exit 0
+    elif [[ "$local_ref" =~ $branch_naming_pattern ]]; then
+        # Branch name follows the convention
+        exit 0
+    else
+        # Branch name does not follow the convention
+        echo "Error: Branch name does not follow the naming convention. It should start with 'minor/', 'patch/', or 'major/'."
+        exit 1
+    fi
+done
+
+# Get the current branch name
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+
+# Check if the branch exists on the remote
+if git ls-remote --exit-code --heads origin $current_branch > /dev/null 2>&1; then
+    echo "Branch $current_branch already exists on remote. Skipping version check."
+    exit 0
+else
+    # Check if version has been updated
+    if ! git diff -U0 --cached --exit-code package.json | grep -qE 'version'; then
+        echo "ERROR: The 'version' field in package.json must be updated."
+        exit 1
+    fi
+fi
