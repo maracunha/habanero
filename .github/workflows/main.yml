@@ -22,9 +22,13 @@ jobs:
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token
                   WITH_V: true
+            - name: Get a tag number
+              run: |
+                  tag="$(git for-each-ref --sort=-v:refname --format '%(refname:lstrip=2)' | grep -E "$tagFmt" | head -n 1)"
+
             - name: Bump Version Package Json
               uses: ramonpaolo/bump-version@v2.3.1
               with:
-                  tag: ${{ steps.tag.outputs.new_tag }} # Accessing the context and get the reference_name, that in this case, is the tag that you created(ex: v1.0.0)
+                  tag: ${{ tag }}
                   commit: true
                   branch_to_push: 'main'
