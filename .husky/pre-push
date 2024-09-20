@@ -23,22 +23,6 @@ do
     fi
 done
 
-# Get the current branch name
-current_branch=$(git rev-parse --abbrev-ref HEAD)
-
-
-# Check if the branch exists on the remote
-if ! git ls-remote --exit-code --heads origin $current_branch > /dev/null 2>&1; then
-    # Branch doesn't exist on remote, so this is the first push
-    echo "First push of branch $current_branch. Checking version..."
-    if ! git diff -U0 origin/main..HEAD -- package.json | grep -qE 'version'; then
-        echo "ERROR: The 'version' field in package.json must be updated for the first push of a new branch."
-        exit 1
-    fi
-else
-    echo "Branch $current_branch already exists on remote. Skipping version check."
-fi
-
 # Extract current version from package.json
 current_version=$(jq -r .version package.json)
 
