@@ -3,8 +3,6 @@
 remote="$1"
 url="$2"
 
-set -x
-
 # Specify your updated branch naming convention regex pattern
 branch_naming_pattern="^refs/heads/(minor|patch|major)/[a-z0-9-]+$"
 
