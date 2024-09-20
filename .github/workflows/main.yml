@@ -22,7 +22,8 @@ jobs:
               uses: anothrNick/github-tag-action@v1 # Don't use @master or @v1 unless you're happy to test the latest version
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  WITH_V: true
-                  #PRERELEASE: true
-            - name: Bump package version
-              uses: jpb06/bump-package@latest
+              with:
+                  major-keywords: BREAKING CHANGE
+                  minor-keywords: feat,minor
+                  patch-keywords: fix,chore
+                  should-default-to-patch: true
