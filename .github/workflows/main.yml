@@ -25,9 +25,4 @@ jobs:
                   WITH_V: true
                   #PRERELEASE: true
             - name: Bump package version
-              id: bumping-version
               uses: jpb06/bump-package@latest
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  branch: main
-                  should-default-to-patch: true
