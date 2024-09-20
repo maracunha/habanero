@@ -28,6 +28,6 @@ jobs:
               env:
                   tag-name: git for-each-ref --sort=-v:refname --format '%(refname:lstrip=2)' | grep -E "$tagFmt" | head -n 1
               with:
-                  tag: ${{ tag-name }}
+                  tag: ${{ env.tag-name }}
                   commit: true
                   branch_to_push: 'main'
