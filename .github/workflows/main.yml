@@ -1,4 +1,4 @@
-name: Bump version
+name: Bump version tag and package.json
 on:
     pull_request:
         types:
@@ -17,13 +17,14 @@ jobs:
               with:
                   ref: ${{ github.event.pull_request.merge_commit_sha }}
                   fetch-depth: '0'
-
             - name: Bump version and push tag
               uses: anothrNick/github-tag-action@v1 # Don't use @master or @v1 unless you're happy to test the latest version
               env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token
+                  WITH_V: true
+            - name: Bump Version Package Json
+              uses: ramonpaolo/bump-version@v2.3.1
               with:
-                  major-keywords: BREAKING CHANGE
-                  minor-keywords: feat,minor
-                  patch-keywords: fix,chore
-                  should-default-to-patch: true
+                  tag: ${{ github.ref_name }} # Accessing the context and get the reference_name, that in this case, is the tag that you created(ex: v1.0.0)
+                  commit: true
+                  branch_to_push: 'main'
