@@ -29,6 +29,6 @@ jobs:
             - name: Bump Version Package Json
               uses: ramonpaolo/bump-version@v2.3.1
               with:
-                  tag: ${{ tag }}
+                  tag: ${{ env.tag }}
                   commit: true
                   branch_to_push: 'main'
